@@ -1,3 +1,5 @@
+> **Development branch — authorization API v2:** see [build instructions](docs/build-and-test.md) and [audit status and limits](docs/mutation-authorization-status.md). The independent Guard is in [ivdsh1/RexPermsGuard](https://github.com/ivdsh1/RexPermsGuard). No upstream PR yet.
+
 # RexPerms
 [![RexPerms trailer](https://img.youtube.com/vi/cMLJXUCrY_E/maxresdefault.jpg)](https://youtu.be/cMLJXUCrY_E)
 A permission plugin for Minecraft servers that works the same way as LuckPerms: groups, inheritance,
