@@ -5,8 +5,8 @@ Use um **JDK completo** (8, 17 ou 21) e Maven 3.8+ no PATH. O compiler plugin 3.
 Os dois diretórios devem ser irmãos:
 
 ```sh
-git clone --branch feature/rexperms-guard-bundle https://github.com/ivdsh1/RexPerms.git
-git clone --branch feature/rexperms-guard-bundle https://github.com/ivdsh1/RexPermsGuard.git
+git clone --branch main https://github.com/ivdsh1/RexPerms.git
+git clone --branch main https://github.com/ivdsh1/RexPermsGuard.git
 cd RexPerms
 ```
 
@@ -27,6 +27,45 @@ build-all.bat
 Ambos executam o reactor Maven `mvn -B -f bundle/pom.xml clean verify`, com testes habilitados. Também é possível iniciar pelo `build.sh`/`build.bat` do Guard.
 
 Para compilar separadamente, na raiz do RexPerms rode `mvn clean install`, depois na raiz do Guard rode `mvn clean verify`. O Guard exige o artefato modificado `2.0.0-guard.1-SNAPSHOT`; o JAR 2.0.0 original não serve.
+
+## Atualizar clones existentes (git pull)
+
+Se você já clonou os projetos, não clone novamente dentro deles. No computador usado nesta configuração, os diretórios são:
+
+- `~/Downloads/central/projetos/RexPerms/RexPerms`
+- `~/Downloads/central/projetos/RexPerms/RexPermsGuard`
+
+Execute:
+
+```sh
+cd ~/Downloads/central/projetos/RexPerms/RexPerms
+git status --short
+git fetch origin
+git switch main
+git pull --ff-only origin main
+
+cd ../RexPermsGuard
+git status --short
+git fetch origin
+git switch main
+git pull --ff-only origin main
+
+cd ../RexPerms
+sh build-all.sh
+```
+
+Se `git status --short` listar arquivos que você editou e o Git bloquear a troca de branch ou o pull, preserve essas alterações e envie a mensagem. Não use reset --hard para contornar isso. `git fetch` baixa o histórico; `git switch main` seleciona a branch; `git pull --ff-only` atualiza sem criar um merge inesperado.
+
+Se aparecer `mvn: não encontrado`, instale Maven e um JDK completo. No Arch Linux:
+
+```sh
+sudo pacman -Syu maven jdk21-openjdk
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+export PATH="$JAVA_HOME/bin:$PATH"
+mvn -version
+```
+
+Os exports valem para o terminal atual. Use esse mesmo terminal para compilar. `build-all.sh` é para Linux/macOS; `build-all.bat` é para Windows.
 
 ## JARs
 

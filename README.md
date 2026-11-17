@@ -1,4 +1,4 @@
-> **Development branch — authorization API v2:** see [build instructions](docs/build-and-test.md) and [audit status and limits](docs/mutation-authorization-status.md). The independent Guard is in [ivdsh1/RexPermsGuard](https://github.com/ivdsh1/RexPermsGuard). No upstream PR yet.
+> **Development build on main — authorization API v2:** see [build instructions](docs/build-and-test.md) and [audit status and limits](docs/mutation-authorization-status.md). The independent Guard is in [ivdsh1/RexPermsGuard](https://github.com/ivdsh1/RexPermsGuard). No upstream PR yet.
 
 # RexPerms
 [![RexPerms trailer](https://img.youtube.com/vi/cMLJXUCrY_E/maxresdefault.jpg)](https://youtu.be/cMLJXUCrY_E)
@@ -16,7 +16,7 @@ For Support and Direct Download Link: https://craftrank.org/resources/1146-rexpe
 
 ## Compatibility
 
-Every version below was tested on a real server with a connected player running the same
+The table below records upstream's earlier tests, not validation of the authorization changes on this fork. See [current verification results](docs/verification-results.md) for this build.\n\nUpstream reports that every version below was tested on a real server with a connected player running the same
 18-step scenario (join, live permission grant, vanilla command unlock, world-context deny, `/rp check`,
 chat prefix, tab list prefix, PlaceholderAPI, temporary permission expiry, promotion, Vault, restart persistence).
 
@@ -47,7 +47,7 @@ How it stays compatible:
 
 ## Installation
 
-1. Put `RexPerms-2.0.0.jar` in `plugins/`.
+1. Put `RexPerms-2.0.0-guard.1-SNAPSHOT.jar` in `plugins/`.
 2. Start the server. `plugins/RexPerms/config.yml` and `messages.yml` are created.
 3. Vault and PlaceholderAPI are hooked automatically when installed.
 
@@ -322,7 +322,7 @@ those plugins read the prefix through Vault or PlaceholderAPI.
 mvn package
 ```
 
-Output: `target/RexPerms-2.0.0.jar` (dependencies shaded and relocated). Building needs JDK 11+;
+Output: `target/RexPerms-2.0.0-guard.1-SNAPSHOT.jar` (dependencies shaded and relocated). Use a complete JDK 8, 17 or 21 and Maven 3.8+;
 the result runs on Java 8+. Unit tests cover the calculation engine, YAML and SQLite storage, and
 duration/context/argument parsing.
 
